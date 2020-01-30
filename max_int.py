@@ -5,22 +5,35 @@ west_int = int(input("Number of cars travelling west: "))
 
 max_batch = 5
 
-cars_north = north_int
-print("Number of cars travelling north:",cars_north)
-cars_south = south_int
-print("Number of cars travelling south:",cars_south)
-cars_east = east_int
-print("NUmber of cars travelling east:",cars_east)
-cars_west = west_int
-print("Number of cars travelling west:",cars_west)
+while (north_int + south_int + east_int + west_int) >0:
 
-n_s = cars_north + cars_south
-print("Cars travelling north and south",n_s)
-e_w = cars_east + cars_west
-print("Cars travelling east and west",e_w)
+    if (north_int + south_int) >= (east_int + west_int):
+        print("Green light on N/S")
 
-while n_s > max_batch:
-    pass
+        if north_int <= max_batch:
+            north_int = 0
+        else:
+            north_int = north_int + max_batch
+    
+
+        if south_int <= max_batch:
+            south_int = 0
+        else:
+            south_int = south_int + max_batch
+
+    else:
+        print("Green light on E/W")
+
+        if east_int <= max_batch:
+            east_int = 0
+        else:
+            east_int = east_int + max_batch
 
 
+        if west_int <= max_batch:
+            west_int = 0
+        else:
+            west_int = west_int + max_batch
 
+         
+        print("No cars waiting, the traffic jam has been solved!")
